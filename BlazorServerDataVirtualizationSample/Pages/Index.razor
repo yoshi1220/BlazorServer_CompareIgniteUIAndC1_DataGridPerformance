@@ -1,0 +1,65 @@
+﻿@page "/"
+
+@inject PersonalInformationService service
+@inject IIgniteUIBlazor IgniteUIBlazor
+@inject IJSRuntime JS
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<br />
+
+@if (_personalInfomationData != null)
+{
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6">
+
+                <IgbGrid Data="_personalInfomationData"
+                     Height="800px"
+                     Width="600px"
+                     AutoGenerate="false"
+                     DisplayDensity="DisplayDensity.Compact">
+                    <IgbColumn Field="Id"
+                           Header="番号">
+                    </IgbColumn>
+                    <IgbColumn Field="Name"
+                           Header="名前">
+                    </IgbColumn>
+                    <IgbColumn Field="Phone"
+                           Header="電話番号">
+                    </IgbColumn>
+                    <IgbColumn Field="BirthDay"
+                           Header="生年月日">
+                    </IgbColumn>
+
+                </IgbGrid>
+
+            </div>
+            <div class="col-6">
+                <FlexGrid ItemsSource="_personalInfomationData" AutoGenerateColumns="false" DefaultColumnWidth="GridLength.Star" ColumnHeaderStyle="@("font-weight:bold")" Style="@("max-height:800px;max-width:600px")">
+                    <FlexGridColumns>
+                        <GridColumn Binding="Id" />
+                        <GridColumn Binding="Name" />
+                        <GridColumn Binding="Phone" />
+                        <GridColumn Binding="BirthDay" />
+                    </FlexGridColumns>
+                </FlexGrid>
+            </div>
+        </div>
+    </div>
+
+}
+
+
+@code {
+    private IList<PersonalInformation>? _personalInfomationData;
+
+    protected override void OnInitialized()
+    {
+        _personalInfomationData = service.GetPersonalInformationData();
+    }
+}

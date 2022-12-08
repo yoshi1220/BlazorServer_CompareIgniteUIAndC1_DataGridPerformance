@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="C1.Blazor.Core.Ja" Version="6.0.20222.291" />
+    <PackageReference Include="C1.Blazor.Grid.Ja" Version="6.0.20222.291" />
+    <PackageReference Include="IgniteUI.Blazor" Version="22.2.36" />
+  </ItemGroup>
+
+</Project>
